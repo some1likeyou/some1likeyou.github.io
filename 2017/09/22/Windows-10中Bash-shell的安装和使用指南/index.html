@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="工具使用," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Windows 10 周年纪念版更新为开发者提供了一个全新的特性：一个完整的、基于Ubuntu的Bash Shell环境，使得我们可以在Windows上直接运行Linux的软件。  关于Windows 10中的Bash Shell，你应该知道的事这并不是一个虚拟机，也不是一个容器，更不是为Windows系统编译的Linux软件。而是微软为Linux开发的一个子系统，这个子系统来源于一个已经终止">
+<meta name="keywords" content="工具使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows 10中Bash shell的安装和使用指南">
+<meta property="og:url" content="http://yoursite.com/2017/09/22/Windows-10中Bash-shell的安装和使用指南/index.html">
+<meta property="og:site_name" content="於浩渺中">
+<meta property="og:description" content="Windows 10 周年纪念版更新为开发者提供了一个全新的特性：一个完整的、基于Ubuntu的Bash Shell环境，使得我们可以在Windows上直接运行Linux的软件。  关于Windows 10中的Bash Shell，你应该知道的事这并不是一个虚拟机，也不是一个容器，更不是为Windows系统编译的Linux软件。而是微软为Linux开发的一个子系统，这个子系统来源于一个已经终止">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://res.cloudinary.com/dbqp81yvw/image/upload/c_scale,w_600/v1506067806/win10_bash/1.jpg">
+<meta property="og:image" content="http://res.cloudinary.com/dbqp81yvw/image/upload/c_scale,w_600/v1506067806/win10_bash/2.jpg">
+<meta property="og:image" content="http://res.cloudinary.com/dbqp81yvw/image/upload/v1506067806/win10_bash/3.png">
+<meta property="og:image" content="http://res.cloudinary.com/dbqp81yvw/image/upload/c_scale,w_600/v1506067807/win10_bash/4.png">
+<meta property="og:image" content="http://res.cloudinary.com/dbqp81yvw/image/upload/c_scale,w_600/v1506067807/win10_bash/5.png">
+<meta property="og:image" content="http://res.cloudinary.com/dbqp81yvw/image/upload/c_scale,w_600/v1506067806/win10_bash/6.png">
+<meta property="og:image" content="http://res.cloudinary.com/dbqp81yvw/image/upload/c_scale,w_600/v1506067807/win10_bash/7.png">
+<meta property="og:image" content="http://res.cloudinary.com/dbqp81yvw/image/upload/c_scale,w_600/v1506067807/win10_bash/8.png">
+<meta property="og:updated_time" content="2017-09-22T09:46:04.196Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Windows 10中Bash shell的安装和使用指南">
+<meta name="twitter:description" content="Windows 10 周年纪念版更新为开发者提供了一个全新的特性：一个完整的、基于Ubuntu的Bash Shell环境，使得我们可以在Windows上直接运行Linux的软件。  关于Windows 10中的Bash Shell，你应该知道的事这并不是一个虚拟机，也不是一个容器，更不是为Windows系统编译的Linux软件。而是微软为Linux开发的一个子系统，这个子系统来源于一个已经终止">
+<meta name="twitter:image" content="http://res.cloudinary.com/dbqp81yvw/image/upload/c_scale,w_600/v1506067806/win10_bash/1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/22/Windows-10中Bash-shell的安装和使用指南/"/>
+
+
+
+
+
+  <title>Windows 10中Bash shell的安装和使用指南 | 於浩渺中</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">於浩渺中</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">信息不是知识，更不是能力</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/22/Windows-10中Bash-shell的安装和使用指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bernard">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://res.cloudinary.com/dbqp81yvw/image/upload/v1506070661/Avatar/IMG_0162.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="於浩渺中">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Windows 10中Bash shell的安装和使用指南</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-22T16:31:34+08:00">
+                2017-09-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://res.cloudinary.com/dbqp81yvw/image/upload/c_scale,w_600/v1506067806/win10_bash/1.jpg" alt=""></p>
+<blockquote>
+<p>Windows 10 周年纪念版更新为开发者提供了一个全新的特性：一个完整的、基于Ubuntu的Bash Shell环境，使得我们可以在Windows上直接运行Linux的软件。</p>
+</blockquote>
+<h2 id="关于Windows-10中的Bash-Shell，你应该知道的事"><a href="#关于Windows-10中的Bash-Shell，你应该知道的事" class="headerlink" title="关于Windows 10中的Bash Shell，你应该知道的事"></a>关于Windows 10中的Bash Shell，你应该知道的事</h2><p>这并不是一个虚拟机，也不是一个容器，更不是为Windows系统编译的Linux软件。而是微软为Linux开发的一个子系统，这个子系统来源于一个已经终止的项目——Astoria开发的为了在Windows系统上运行安卓应用的项目。</p>
+<p>你可以把它当成Linux系统下与之相对应的软件：Wine。Wine让用户可以在Linux系统上直接运行Windows的应用程序，那么这个基于Windows的Linux子系统的功能就是让你可以在Windows上直接运行Linux系统的软件。</p>
+<a id="more"></a>
+<p>微软按照相应的规范提供了一个完整的、基于Ubuntu的Bash Shell，并运行于这个子系统之上。从技术上来说，这根本不是Linux系统，Linux是底层的操作系统内核，在这里是可不用的。取而代之的是，它允许你运行Bash shell和一些文件，这些文件和你平常在Ubuntu上运行的完全一样。免费软件纯化论者常争论道，Linux操作系统应该被称为“GUN/Linux操作系统”，因为实在有很多遵循 GUN协议的自由软件运行与Linux内核之上。你将安装的Bash 就是只是这些遵循GUN协议的实用程序和软件的一员。</p>
+<p>Windows对Bash shell有一些限制。它不能运行服务端程序，也不能使用图形化软件。它的目的是为开发者提供一个能在Windows上运行的Linux命令行类程序。这些程序可以读写Windows文件系统，但是你不能用Bash命令运行Windows程序，也不能从标准Windows命令行执行Bash命令。他们使用相同的Windows文件系统，不是所有的命令行应用程序都能起作用，而且，这一新特性仍然处于测试版。</p>
+<h2 id="怎样安装Bash-shell"><a href="#怎样安装Bash-shell" class="headerlink" title="怎样安装Bash shell"></a>怎样安装Bash shell</h2><p>开始之前，先确认你的Windows 10已经安装周年版升级包。本程序只能运行于64位版的windows系统，所以，如果你仍在使用32位版的系统，现在是时间升级到64位版window 10了。</p>
+<p>确认你的windows 10版本符合要求后，打开“设置”菜单，进入“更新和安全”，选择“针对开发人员”，再选中“开发人员模式”来激活开发者模式，这需要一定时间。</p>
+<p><img src="http://res.cloudinary.com/dbqp81yvw/image/upload/c_scale,w_600/v1506067806/win10_bash/2.jpg" alt=""></p>
+<p>然后，打开“控制面板”，点击“程序和功能”，再点击“启用或关闭Windows功能”。在弹出的对话框中，选中功能列表中的“适用于Linux的Windows子系统”，点击“确定”。</p>
+<p><img src="http://res.cloudinary.com/dbqp81yvw/image/upload/v1506067806/win10_bash/3.png" alt=""></p>
+<p>然后，系统会建议重启计算机。点击“重启计算机”来重启，Windows 10将会安装这个新功能。</p>
+<p>重启完成后，单击“开始”按钮（或者按Windows键），输入“bash”，按下回车键。</p>
+<p><img src="http://res.cloudinary.com/dbqp81yvw/image/upload/c_scale,w_600/v1506067807/win10_bash/4.png" alt=""></p>
+<p>第一次运行bash.exe程序的时候，会提示你接受服务条款。然后会从Windows商店下载“Bash on Ubuntu on Windows”应用程序。然后会让你创建一个用于Bash环境的用户名和密码。</p>
+<p><img src="http://res.cloudinary.com/dbqp81yvw/image/upload/c_scale,w_600/v1506067807/win10_bash/5.png" alt=""></p>
+<p>如果想使安装过程自动进行，你可以在命令行窗口运行如下命令。这将会自动同意所有提示并创建一个名为root、密码为空的用户账户。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lxrun /install /u</div></pre></td></tr></table></figure>
+<h2 id="怎样使用Bash-shell和安装Linux软件"><a href="#怎样使用Bash-shell和安装Linux软件" class="headerlink" title="怎样使用Bash shell和安装Linux软件"></a>怎样使用Bash shell和安装Linux软件</h2><p>现在，你有了一个基于Ubuntu的完整的命令行式Bash壳软件。因为他们使用的是相同的二进制程序，你可以使用Ubuntu的<code>apt-get</code>命令从Ubuntu软件仓库下载安装软件。在这里，你可以使用所有的Linux命令行软件，虽然不是所有的软件都能正常工作（尤其是在首发的测试版本中）。</p>
+<p>要打开Bash shell，只需打开开始菜单，并输入<code>bash</code>或<code>Ubuntu</code>，系统将自动匹配到“Bash on Ubuntu on Windows”程序。你可以将此程序pin在开始目录、任务栏或者桌面上，这样可以快速启动。</p>
+<p><img src="http://res.cloudinary.com/dbqp81yvw/image/upload/c_scale,w_600/v1506067806/win10_bash/6.png" alt=""></p>
+<p>如果你在Linux、Mac OS X或者其他平台熟练使用过Bash shell，那么，在这里你将得心应手。你不用使用<code>sudo</code>命令，因为你已经是root权限。UNIX平台的root账户具有完全的系统权限，就像windows系统的“Administartor”账户一样。在Bash shell环境中，Windows系统文件的路径为<code>/mnt/c</code>。</p>
+<p>你可以使用与你曾在Linux中使用的完全一样的Linux终端命令。如果你是对使用DOS命令的标准Windows命令提示行熟悉，下面是一些基本命令在Windows和Bash的对照表：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>Bash shell</th>
+<th>Windows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>切换目录</td>
+<td>cd</td>
+<td>cd，dir</td>
+</tr>
+<tr>
+<td>列出文件和目录</td>
+<td>ls</td>
+<td>dir</td>
+</tr>
+<tr>
+<td>移动或重命名文件</td>
+<td>mv</td>
+<td>move，rename</td>
+</tr>
+<tr>
+<td>复制文件</td>
+<td>cp</td>
+<td>copy</td>
+</tr>
+<tr>
+<td>删除文件</td>
+<td>rm</td>
+<td>del，erase</td>
+</tr>
+<tr>
+<td>创建目录</td>
+<td>mkdir</td>
+<td>mkdir</td>
+</tr>
+<tr>
+<td>编辑文本</td>
+<td>vi，nano</td>
+<td>edit</td>
+</tr>
+</tbody>
+</table>
+<p>和Windows不一样，Bash shell和它下面的模拟式Linux环境是大小写敏感的，记住这点很重要。换句话说，文件<code>File.txt</code>和<code>file.txt</code>在Liux中不是同一个文件。</p>
+<p>更多的使用指导，可以查看<a href="https://www.howtogeek.com/140679/beginner-geek-how-to-start-using-the-linux-terminal/" target="_blank" rel="external">our beginner’s guide to the Linux command-line</a>，或其它的关于Bash shell、Ubuntu命令行和Linux的在线使用指南。</p>
+<p>你可以使用<code>apt-get</code>命令，来安装和更新Ubuntu环境下的软件。当然，首先需要确保你已执行<code>sudo</code>命令，以让命令以<code>root</code>权限运行，就像Windows系统中的Administrator权限一样。下面是一些你需要知道的<code>apt-get</code>命令：</p>
+<ul>
+<li><code>sudo apt-get update</code>：下载可用包的更新信息</li>
+<li><code>sudo apt-get &lt;包名称&gt;</code>：安装应用程序包</li>
+<li><code>sudo apt-get remove &lt;包名称&gt;</code>：卸载应用程序包</li>
+<li><code>sudo apt-cache search &lt;包关键字&gt;</code>：按包名称或描述搜索可用包</li>
+<li><code>sudo apt-get upgrade</code>：下载已安装包程序的最新版本</li>
+</ul>
+<p><img src="http://res.cloudinary.com/dbqp81yvw/image/upload/c_scale,w_600/v1506067807/win10_bash/7.png" alt=""></p>
+<p>程序下载并安装好之后，可以在命令提示符行输入程序名称在运行，并且可以查看具体程序的文档了解更多信息。</p>
+<p><img src="http://res.cloudinary.com/dbqp81yvw/image/upload/c_scale,w_600/v1506067807/win10_bash/8.png" alt=""></p>
+<p>原文连接：<a href="https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/" target="_blank" rel="external">How to Install and Use the Linux Bash Shell on Windows 10</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/工具使用/" rel="tag"># 工具使用</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/17/Github-简明指南/" rel="next" title="Git 简明指南">
+                <i class="fa fa-chevron-left"></i> Git 简明指南
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://res.cloudinary.com/dbqp81yvw/image/upload/v1506070661/Avatar/IMG_0162.jpg"
+               alt="Bernard" />
+          <p class="site-author-name" itemprop="name">Bernard</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于Windows-10中的Bash-Shell，你应该知道的事"><span class="nav-number">1.</span> <span class="nav-text">关于Windows 10中的Bash Shell，你应该知道的事</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎样安装Bash-shell"><span class="nav-number">2.</span> <span class="nav-text">怎样安装Bash shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎样使用Bash-shell和安装Linux软件"><span class="nav-number">3.</span> <span class="nav-text">怎样使用Bash shell和安装Linux软件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bernard</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
