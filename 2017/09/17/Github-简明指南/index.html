@@ -343,9 +343,9 @@
 <p><strong>版本库的创建方式有两种：</strong></p>
 <ol>
 <li><p>本地创建<br>首先，创建一个空目录</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> mkdir learngit</div><div class="line"><span class="meta">$</span> cd learngit</div><div class="line"><span class="meta">$</span> pwd</div><div class="line">/Users/hj/learngit</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> mkdir learngit</span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> learngit</span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">pwd</span></span></div><div class="line">/Users/hj/learngit</div></pre></td></tr></table></figure>
 <p>然后，通过<code>git init</code>命令把这个目录变成Git可以管理的仓库</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git init</div><div class="line">Initialized empty Git repository in /Users/hj/learngit/.git/</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git init</span></div><div class="line">Initialized empty Git repository in /Users/hj/learngit/.git/</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <a id="more"></a>
@@ -355,7 +355,7 @@
 <p>即在Git服务器上建立仓库，并clone到本地，一般我们用到的是在GitHub上创建仓库。</p>
 <p>a. 首先，在GitHub上建立一个库，建立方法不赘述，获取链接地址（SSH或HTTPS），复制地址。</p>
 <p>b. 在本地用<code>git clone</code>命令克隆到本地库：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git clone git@github.com:some1likeyou/some1likeyou.git</div><div class="line">Cloning into 'some1likeyou'...</div><div class="line">remote:Counting objects:3,done</div><div class="line">remote:Total 3</div><div class="line">...</div><div class="line"></div><div class="line"><span class="meta">$</span> cd some1likeyou</div><div class="line"><span class="meta">$</span> ls</div><div class="line">README.md</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> git@github.com:some1likeyou/some1likeyou.git</span></div><div class="line">Cloning into 'some1likeyou'...</div><div class="line">remote:Counting objects:3,done</div><div class="line">remote:Total 3</div><div class="line">...</div><div class="line"></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> some1likeyou</span></div><div class="line"><span class="meta">$</span><span class="bash"> ls</span></div><div class="line">README.md</div></pre></td></tr></table></figure>
 <p>Git支持多种协议，包括<code>https</code>，但通过<code>ssh</code>支持的原生<code>git</code>协议速度最快。</p>
 <h3 id="工作区（Working-Directory）"><a href="#工作区（Working-Directory）" class="headerlink" title="工作区（Working Directory）"></a>工作区（Working Directory）</h3><p>就是电脑里实际看到的目录，其中有一个隐藏目录<code>.git</code>，这个不算工作区，而是Git的版本库。</p>
 <p>版本库里最重要的就是叫stage(或index)的暂存区，还有第一个分支<code>master</code>，以及指向<code>master</code>的一个叫<code>HEAD</code>的指针。</p>
@@ -373,9 +373,9 @@
 <h2 id="文件修改管理的一般流程"><a href="#文件修改管理的一般流程" class="headerlink" title="文件修改管理的一般流程"></a>文件修改管理的一般流程</h2><p>修改文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vi readme.txt</div></pre></td></tr></table></figure>
 <p>将修改后的文件添加到暂存区</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git add readme.txt</div><div class="line"><span class="meta">$</span> git status #查看当前状态</div><div class="line"><span class="meta">#</span> On branch master</div><div class="line"><span class="meta">#</span> Changes to be committed:</div><div class="line"><span class="meta">#</span>   (use "git reset HEAD &lt;file&gt;..." to unstage)</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span>       modified:   readme.txt</div><div class="line"><span class="meta">#</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git add readme.txt</span></div><div class="line"><span class="meta">$</span><span class="bash"> git status <span class="comment">#查看当前状态</span></span></div><div class="line"><span class="meta">#</span><span class="bash"> On branch master</span></div><div class="line"><span class="meta">#</span><span class="bash"> Changes to be committed:</span></div><div class="line"><span class="meta">#</span><span class="bash">   (use <span class="string">"git reset HEAD &lt;file&gt;..."</span> to unstage)</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line"><span class="meta">#</span><span class="bash">       modified:   readme.txt</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div></pre></td></tr></table></figure>
 <p>然后，提交修改</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git commit -m "git tracks changes"</div><div class="line">[master d4f25b6] git tracks changes</div><div class="line"> 1 file changed, 1 insertion(+)</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git commit -m <span class="string">"git tracks changes"</span></span></div><div class="line">[master d4f25b6] git tracks changes</div><div class="line"> 1 file changed, 1 insertion(+)</div></pre></td></tr></table></figure>
 <p>查看提交历史记录，<code>git log</code>，以确定要回到哪个版本</p>
 <p>回退到上一版本：<code>git reset --hard HEAD^</code></p>
 <p>回退到上上版本：<code>git reset --hard HEAD^^</code></p>
@@ -493,7 +493,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -506,7 +506,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
